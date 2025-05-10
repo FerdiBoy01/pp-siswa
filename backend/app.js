@@ -12,9 +12,6 @@ const path = require("path");
 require("dotenv").config();
 const db = require("./config/dbConfig");
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
 //midelware
 app.use(express.json()); //wajib untuk parsing json
 //gunakan router
