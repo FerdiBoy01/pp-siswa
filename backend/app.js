@@ -9,17 +9,13 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT;
 const path = require("path");
+app.use(cors());
 
 require("dotenv").config();
 const db = require("./config/dbConfig");
 
 //midelware
 app.use(express.json()); //wajib untuk parsing json
-app.use(cors());
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("ada masalah di sini");
-});
 //gunakan router
 app.use("/siswa", siswaRoute); //penting
 app.use("/kelas", kelasRoute);
