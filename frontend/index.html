@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <title>Data Siswa</title>
+    <title>Manajemen Siswa</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Data Siswa</h1>
 
+    <form id="editSiswaForm">
+      <input type="hidden" id="siswa_id" />
+
+      <label>Nama:</label>
+      <input type="text" id="nama" name="nama" required />
+
+      <label>NISN:</label>
+      <input type="text" id="nisn" name="nisn" required />
+
+      <label>Kelas:</label>
+      <select id="id_kelas" name="id_kelas" required></select>
+
+      <label>No HP:</label>
+      <input type="text" id="no_hp" name="no_hp" />
+
+      <label>Alamat:</label>
+      <textarea id="alamat" name="alamat"></textarea>
+
+      <label>Jenis Kelamin:</label>
+      <select id="jenis_kelamin" name="jenis_kelamin">
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
+
+      <label>Tanggal Lahir:</label>
+      <input type="date" id="tanggal_lahir" name="tanggal_lahir" />
+
+      <button type="submit">Simpan / Update</button>
+    </form>
+
+    <h2>Daftar Siswa</h2>
     <table border="1">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nama</th>
           <th>NISN</th>
           <th>Kelas</th>
@@ -19,30 +51,11 @@
           <th>Jenis Kelamin</th>
           <th>Tanggal Lahir</th>
           <th>Aksi</th>
+          <th>Aksi</th>
         </tr>
       </thead>
-      <tbody id="siswa-table">
-        <!-- Data siswa akan ditampilkan di sini -->
-      </tbody>
+      <tbody id="siswa-table"></tbody>
     </table>
-
-    <h2>Tambah Siswa</h2>
-    <form id="form-siswa">
-      <input type="text" name="nama" placeholder="Nama" required />
-      <input type="text" name="nisn" placeholder="NISN" required />
-      <select name="id_kelas" id="id_kelas" required>
-        <option value="">-- Pilih Kelas --</option>
-      </select>
-      <input type="text" name="no_hp" placeholder="Nomor HP" required />
-      <input type="text" name="alamat" placeholder="Alamat" required />
-      <select name="jenis_kelamin" required>
-        <option value="">-- Pilih Jenis Kelamin --</option>
-        <option value="Laki-laki">Laki-laki</option>
-        <option value="Perempuan">Perempuan</option>
-      </select>
-      <input type="date" name="tanggal_lahir" required />
-      <button type="submit">Simpan</button>
-    </form>
 
     <script src="app.js"></script>
   </body>

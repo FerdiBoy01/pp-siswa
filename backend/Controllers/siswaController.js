@@ -8,6 +8,24 @@ const getSiswa = (req, res) => {
   });
 };
 
+// Ambil siswa berdasarkan ID
+const getSiswaById = (req, res) => {
+  const id = req.params.id;
+  siswaModel.getSiswaById(id, (err, result) => {
+    if (err) return res.status(500).json({ error: "Gagal mengambil data siswa", detail: err });
+    if (result.length === 0) return res.status(404).json({ error: "Siswa tidak ditemukan" });
+    res.json(result[0]); // Kirimkan data siswa berdasarkan ID
+  });
+};
+
+//Ambil semua data kelas
+const getAllkelas = (req, res) => {
+  siswaModel.cekAllkelas((err, result) => {
+    if (err) return res.status(500).json({ error: "gagal ambil kelas", detail: err });
+    res.json(result);
+  });
+};
+
 //rekap nilai
 const getRekapPelanggaran = (req, res) => {
   siswaModel.getRekapPelanggaran((err, result) => {
@@ -81,4 +99,6 @@ module.exports = {
   editSiswa,
   hapusSiswa,
   getRekapPelanggaran,
+  getSiswaById,
+  getAllkelas,
 };

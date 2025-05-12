@@ -7,6 +7,13 @@ const getAllSiswa = (collback) => {
   JOIN kelas ON siswa.id_kelas = kelas.id`;
   db.query(sql, collback);
 };
+//get siswa byId
+const getSiswaById = (id, callback) => {
+  db.query("SELECT * FROM siswa WHERE id = ?", [id], (err, result) => {
+    if (err) return callback(err, null);
+    callback(null, result);
+  });
+};
 
 //rekap point sisa
 const getRekapPelanggaran = (callback) => {
@@ -37,6 +44,11 @@ const cekKelas = (id_kelas, collback) => {
   db.query(sql, [id_kelas], collback);
 };
 
+//cek semua kelas
+const cekAllkelas = (collback) => {
+  db.query("SELCET * FROM kelas", collback);
+};
+
 // Edit siswa
 const update = (data, id, callback) => {
   const sql = `UPDATE siswa SET 
@@ -58,4 +70,6 @@ module.exports = {
   update,
   deleteSiswa,
   getRekapPelanggaran,
+  getSiswaById,
+  cekAllkelas,
 };
