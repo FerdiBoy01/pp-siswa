@@ -2,7 +2,9 @@ const db = require("../config/dbConfig");
 
 //get data siswa
 const getAllSiswa = (collback) => {
-  const sql = "SELECT * FROM siswa";
+  const sql = `SELECT siswa. *, kelas.nama_kelas
+  FROM siswa
+  JOIN kelas ON siswa.id_kelas = kelas.id`;
   db.query(sql, collback);
 };
 
